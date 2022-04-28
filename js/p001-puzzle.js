@@ -20,8 +20,9 @@ $(document).ready(function(){
       
    
     //Comença el joc
-    $("#jugar").on("click",function(){
+    $("#jugar").on("click", function () {
         creaPuzzle();
+        $('#form-joc').show();
         $(".peca")
         .mousedown(function(){
             zIndexPeca = $(this).css("z-index");
@@ -66,7 +67,6 @@ $(document).ready(function(){
 * Estableix les mides dels contenidors
 */
 function creaPuzzle(){
-  
     ampladaPeca = Math.floor($("#p-"+nomImatge).width()/numColumnes);
     alcadaPeca = Math.floor($("#p-"+nomImatge).height()/numFiles);
 
@@ -85,8 +85,6 @@ function creaPuzzle(){
     $("#solucio").css("background-image","url(imatges/"+nomImatge+ extImatge+")");
 
     $(".peca").draggable();
-     
-
 }
 
 /**
@@ -204,6 +202,7 @@ function distanciaDosPunts(puntA, puntB){
     * 3.- Reviseu la fórmula de càlcul de distància entre dos punts
     * a la lliçó 5: Col·lisions  dels apunts
     *  
-    */ 
+    */
+   
 }
 
