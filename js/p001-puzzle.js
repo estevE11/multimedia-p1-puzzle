@@ -46,7 +46,8 @@ $(document).ready(function(){
                 /**TASCA *****************************
                 * 6.- Codi que mostra la felicitació si puzzleResolt = true
                 * És valora alguna animació o efecte
-                */ 
+                */
+                $('#felicitacio').show();
             }
         });
 
@@ -193,8 +194,18 @@ function puzzleResolt(){
     * En cas que totes les peces siguin a la seva posició 
     * correcte, retorna cert
     *  
-    */ 
-	
+    */
+    let res = true;
+    for (let fila = 0; fila < numFiles; fila++) {
+        for (let columna = 0; columna < numColumnes; columna++) {
+            const peca = $("#f" + fila + "c" + columna);
+            const posCorrecte = getPosicioCorrecte(peca);
+            if (peca.position().top != posCorrecte.top || peca.position().left != posCorrecte.left) {
+                res = false;
+            }
+        }
+    }
+    return res;
 }
 
 
