@@ -61,6 +61,7 @@ function start() {
                 * És valora alguna animació o efecte
                 */
                 $('#felicitacio').show();
+                document.getElementById('sound_win').play();
             }
         });
 
