@@ -20,38 +20,8 @@ $(document).ready(function(){
       
    
     //Comença el joc
-    $("#jugar").on("click", function () {
-        creaPuzzle();
-        $('#form-joc').show();
-        $(".peca")
-        .mousedown(function(){
-            zIndexPeca = $(this).css("z-index");
-            $(this).css("z-index",100);
-        })
-        .mouseup(function(){
-            /**
-            * PosicionaPeca calcula la posició correcte i 
-            * revisa si la distànca entre la posició actual
-            * i la posició correcte és inferior a una 
-            * distància determinada
-            */           
-            console.log($(this).position());
-            posicionaPeca($(this));
-            /**
-            * puzzleResolt revisa si totes les peces
-            * estan a la seva posició correcte i 
-            * En cas afirmatiu, mostra la felicitació
-            */ 
-            if(puzzleResolt()){
-                /**TASCA *****************************
-                * 6.- Codi que mostra la felicitació si puzzleResolt = true
-                * És valora alguna animació o efecte
-                */
-                $('#felicitacio').show();
-            }
-        });
-
-    });    
+    $("#jugar").on('click', start);
+    $("#nouPuzzle").on('click', start);
     $("#resolPuzzle").on("click",function(){
         /**
         * Si l'usuari fa clic, totes les peces
@@ -60,8 +30,41 @@ $(document).ready(function(){
         */ 
         resolPuzzle();
     });
-   
 });
+
+function start() {
+    creaPuzzle();
+    $('#felicitacio').hide();
+    $('#form-joc').show();
+    $(".peca")
+        .mousedown(function () {
+            zIndexPeca = $(this).css("z-index");
+            $(this).css("z-index", 100);
+        })
+        .mouseup(function () {
+            /**
+            * PosicionaPeca calcula la posició correcte i 
+            * revisa si la distànca entre la posició actual
+            * i la posició correcte és inferior a una 
+            * distància determinada
+            */
+            console.log($(this).position());
+            posicionaPeca($(this));
+            /**
+            * puzzleResolt revisa si totes les peces
+            * estan a la seva posició correcte i 
+            * En cas afirmatiu, mostra la felicitació
+            */
+            if (puzzleResolt()) {
+                /**TASCA *****************************
+                * 6.- Codi que mostra la felicitació si puzzleResolt = true
+                * És valora alguna animació o efecte
+                */
+                $('#felicitacio').show();
+            }
+        });
+
+};    
 
 /**
 * Calcula les mides de les peces en funció de la mida de la imatge
