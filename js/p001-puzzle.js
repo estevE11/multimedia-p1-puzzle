@@ -118,8 +118,7 @@ function setImatgePosicioPeces(){
             $("#f"+fila+"c"+columna).css("background-position", (-(columna)*ampladaPeca)+"px "+(-(fila)*alcadaPeca)+"px");   
             $("#f"+fila+"c"+columna).css("left", Math.floor(Math.random()*((numColumnes-1)*ampladaPeca))+"px ");
             $("#f"+fila+"c"+columna).css("top", Math.floor(Math.random()*((numFiles-1)*alcadaPeca))+"px ");
-            
-        }        
+        }
    }   
 
 }
@@ -173,6 +172,14 @@ function resolPuzzle(){
     * seva posició correcte, resolent el puzle
     *  
     */ 
+    for (let fila = 0; fila < numFiles; fila++) {
+        for (let columna = 0; columna < numColumnes; columna++) {
+            const peca = $("#f" + fila + "c" + columna);
+            peca.css('top', fila * alcadaPeca);
+            peca.css('left', columna * ampladaPeca);
+            peca.draggable('disable');
+        }
+    }
 }
 /**
 * Revisa si totes les peces son al seu lloc
