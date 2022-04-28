@@ -35,6 +35,7 @@ $(document).ready(function(){
             * i la posició correcte és inferior a una 
             * distància determinada
             */           
+            console.log($(this).position());
             posicionaPeca($(this));
             /**
             * puzzleResolt revisa si totes les peces
@@ -140,11 +141,12 @@ function posicionaPeca(peca){
     let posicioPeca = peca.position();
     /**TASCA *****************************
     * 1.- Identifica la peça pel seu id (fxcy) i en calcula la
-    * seva posició correcte  (posicioPecaCorrecte) 
-    * 
-    *  
-    */ 
+    * seva posició correcte  (posicioPecaCorrecte)  
+    */
     
+    const posicioPecaCorrecte = getPosicioCorrecte(peca);
+    console.log('pos correcte', posicioPecaCorrecte);
+
     if (distanciaDosPunts(posicioPeca, posicioPecaCorrecte)<10){      
         /**TASCA *****************************
         * 2.- Si la distancia és dins del marge determinat
@@ -152,7 +154,8 @@ function posicionaPeca(peca){
         *
         *  La peça ja no és podrà tornar a moure
         *  
-        */ 
+        */
+        setPosicioPeca(peca.attr('id'), posicioPecaCorrecte);
     }
 
 }
@@ -201,8 +204,22 @@ function distanciaDosPunts(puntA, puntB){
    /**TASCA *****************************
     * 3.- Reviseu la fórmula de càlcul de distància entre dos punts
     * a la lliçó 5: Col·lisions  dels apunts
-    *  
     */
-   
+    let dy = puntB.top - puntA.top;
+    let dx = puntB.left - puntA.left;
+    return Math.abs(Math.sqrt(dx * dx + dy * dy));
 }
 
+
+function getPosicioCorrecte(peca) {
+    const id = peca.attr('id');
+    return {
+        left: parseInt(id.charAt(3)) * ampladaPeca,
+        top: parseInt(id.charAt(1)) * alcadaPeca
+    };
+}
+
+function setPosicioPeca(id, pos) {
+    $("#" + id).css("left", pos.left + "px ");
+    $("#" + id).css("top", pos.top + "px ");
+}
