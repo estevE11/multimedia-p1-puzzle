@@ -155,7 +155,8 @@ function posicionaPeca(peca){
         *  La peça ja no és podrà tornar a moure
         *  
         */
-        setPosicioPeca(peca.attr('id'), posicioPecaCorrecte);
+        setPosicioPeca(peca, posicioPecaCorrecte);
+        peca.draggable('disable');
     }
 
 }
@@ -219,7 +220,7 @@ function getPosicioCorrecte(peca) {
     };
 }
 
-function setPosicioPeca(id, pos) {
-    $("#" + id).css("left", pos.left + "px ");
-    $("#" + id).css("top", pos.top + "px ");
+function setPosicioPeca(peca, pos) {
+    peca.css("left", pos.left + "px ");
+    peca.css("top", pos.top + "px ");
 }
