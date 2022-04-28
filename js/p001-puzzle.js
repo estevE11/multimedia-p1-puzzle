@@ -229,7 +229,12 @@ function distanciaDosPunts(puntA, puntB){
     return Math.abs(Math.sqrt(dx * dx + dy * dy));
 }
 
-
+/**
+ * Calcula la posició d'una pecça
+ * 
+ * @param  peca 
+ * @returns Objecte amb la posicio correcte d'una peça 
+ */
 function getPosicioCorrecte(peca) {
     const id = peca.attr('id');
     return {
@@ -237,6 +242,13 @@ function getPosicioCorrecte(peca) {
         top: parseInt(id.charAt(1)) * alcadaPeca
     };
 }
+
+/**
+ * Canviar la posició d'una peça
+ * 
+ * @param peca 
+ * @param pos Objecte posicio compatible amb jquery
+ */
 
 function setPosicioPeca(peca, pos) {
     peca.css("left", pos.left + "px ");
