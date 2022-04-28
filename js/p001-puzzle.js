@@ -60,7 +60,7 @@ function start() {
                 * 6.- Codi que mostra la felicitació si puzzleResolt = true
                 * És valora alguna animació o efecte
                 */
-                $('#felicitacio').show();
+                $('#felicitacio').fadeIn('slow');
                 document.getElementById('sound_win').play();
             }
         });
