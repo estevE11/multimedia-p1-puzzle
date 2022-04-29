@@ -14,7 +14,6 @@ $(document).ready(function(){
 
 
 
-
     /*****************************************************************/
     
       
@@ -33,8 +32,11 @@ $(document).ready(function(){
 });
 
 function start() {
+    numFiles = $('#in_rows').val();
+    numColumnes = $('#in_cols').val();
     creaPuzzle();
     $('#felicitacio').hide();
+    $('#form-menu').hide();
     $('#form-joc').show();
     $(".peca")
         .mousedown(function () {
